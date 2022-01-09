@@ -56,3 +56,25 @@ def normalize(x: DataFrame) -> DataFrame:
         A min-max scaled DataFrame.
     """
     return (x - min(x)) / (max(x) - min(x))
+
+
+def save_dict(d: Dict, filepath: str) -> None:
+    """Save a dictionary to a specific location.
+    Warning:
+        This will overwrite any existing file at `filepath`.
+    Args:
+        d (Dict): dictionary to save.
+        filepath (str): location to save the dictionary to as a JSON file.
+      """
+    with open(filepath, "w") as fp:
+        json.dump(d, p=fp)
+
+
+def set_seed(seed: int = 1234) -> None:
+    """Set seed for reproducibility.
+    Args:
+        seed (int, optional): number to use as the seed. Defaults to 1234.
+    """
+    # Set seeds
+    np.random.seed(seed)
+    random.seed(seed)
